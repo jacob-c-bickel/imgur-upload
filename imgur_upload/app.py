@@ -9,6 +9,7 @@ import webbrowser
 
 from imgurpython import ImgurClient
 
+dirname = os.path.dirname(__file__)
 
 class App:
     def __init__(self):
@@ -16,7 +17,8 @@ class App:
 
 
     def check_client_credentials(self):
-        stored_creds = json.load(open("creds.json", "r"))
+        with open(os.path.join(dirname,"creds.json"), "r") as f:
+            stored_creds = json.load(f)
         if stored_creds["client_id"] == "YOUR_CLIENT_ID" or \
                 stored_creds["client_secret"] == "YOUR_CLIENT_SECRET":
             print("Error: No client credentials found. ", end="")
@@ -59,7 +61,8 @@ class App:
                 # Update creds file.
                 stored_creds["access_token"] = credentials["access_token"]
                 stored_creds["refresh_token"] = credentials["refresh_token"]
-                json.dump(stored_creds, open("creds.json", "w"), indent=2)
+                with open(os.path.join(dirname, "creds.json"), "w") as f:
+                    json.dump(stored_creds, f, indent=2)
 
 
     def arg_form(self):
