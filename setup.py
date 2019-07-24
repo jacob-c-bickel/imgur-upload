@@ -6,11 +6,11 @@ def readme():
 
 setup(
     name='imgur_upload',
-    version='0.1',
+    version='0.9',
     description='Upload images to Imgur.',
-    url='',
-    author='',
-    author_email='',
+    url='https://github.com/jacob-c-bickel/imgur-upload',
+    author='Jacob Bickel',
+    author_email='jacob.c.bickel@gmail.com',
     license='MIT',
     include_package_data=True,
     packages=['imgur_upload'],
